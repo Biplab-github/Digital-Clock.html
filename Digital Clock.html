@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> clock Project </title>
+ <meta charset="utf-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Akronim&family=Fruktur&family=Hanalei&family=Orbitron:wght@500&family=Plaster&display=swap" rel="stylesheet">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Akronim&family=Allerta+Stencil&family=Fruktur&family=Hanalei&family=Orbitron:wght@500&family=Plaster&display=swap" rel="stylesheet">
+<style type="text/css">
+  #time{
+   color:rgba(0, 255, 255, 1);
+   width:375px;
+   height:160px;
+   background-color:rgb(60, 60, 70);
+   font-size:55px;
+   text-align:center;
+   border-radius:50px 50px 0px 0px;
+   margin-top:80px;
+  line-height:200px;
+  font-family: 'Allerta Stencil', sans-serif;
+ box-shadow: 10px 65px 22px grey ;
+  }
+  
+  
+  #day{
+  margin-top:0px; 
+  text-align:center;
+  width:375px;
+  height:45px;
+ background-color:rgb(60, 60, 70);
+  border-radius:0px 0px 50px 50px;
+ color:rgba(0, 255, 255, 1);
+ font-size:25px;
+ font-family: 'Akronim', cursive;
+  }
+  
+  
+  h1{
+  text-align:center;
+  font-style:italic;
+  color:violet; 
+  text-shadow: 2px 3px 3px grey ;
+  }
+  
+
+ #month{
+ width:109px;
+ height:26px;
+ background-color:rgb(60, 60, 70);
+ color:white;
+ text-align:center;
+ border-radius:12px;
+ margin-left:270px;
+ font-size:18px;
+ }
+
+</style>
+<body>
+<h1>DIGITAL CLOCK </h1> 
+<p id="month"></p>
+ <div id="time" id="tm"></div>
+ <p id="day"></p>
+ 
+ <script>  
+ // setTimeout(updateTime,1000);
+  
+  function updateTime(){
+   const today = new Date();
+    let h = today.getHours();
+    let m = today.getMinutes();
+    let s = today.getSeconds();
+    let session = "AM";
+       m = checkTime(m);
+       s = checkTime(s);
+     
+    document.getElementById('time').innerHTML =  h + ":" + m + ":" + s ;
+                  
+  }
+  
+ setInterval(updateTime,1000);
+ //document.getElementById('time').innerHTML =  h + ":" + m + ":" + s;  // Eta bire declare corle hobe na
+   function checkTime(i){
+    if(i < 10){
+      i = "0" + i;     
+    }
+    
+    return i;
+ }
+ 
+ 
+ 
+ //Day set
+  const days =["SUN","MON","TUE","WED","THU","FRI","SAT"];
+ 
+  let d = new Date();
+  let da = days[d.getDay()];
+ document.getElementById("day").innerHTML = da;
+ 
+ //month  and date set
+ const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+ let mon = new Date();
+ let month = months[mon.getMonth()];
+ 
+ const dte = new Date();
+ let dt = dte.getDate();
+ document.getElementById("month").innerText = month + "," + dt;
+ 
+ </script>
+</body>
+</html>
